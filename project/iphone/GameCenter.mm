@@ -382,10 +382,14 @@ namespace gamecenter {
 
 		GKGameCenterViewController* gameCenterController = [[GKGameCenterViewController alloc] init];
 
+		NSLog (@"Game Center: Gonna show leaderboard %@", strCategory);
+
 		if (gameCenterController != nil) {
 	    gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards;
 	    gameCenterController.leaderboardIdentifier = strCategory;
 	    gameCenterController.gameCenterDelegate = viewDelegate;
+
+	    NSLog (@"Game Center: Showing leaderboard %@", strCategory);
 
 	    UIViewController *glView2 = [[[UIApplication sharedApplication] keyWindow] rootViewController];
 	    [glView2 presentViewController:gameCenterController animated:YES completion:nil];
@@ -414,9 +418,12 @@ namespace gamecenter {
 		NSString* strCategory = [[NSString alloc] initWithUTF8String:categoryID];
 		GKScore* scoreReporter = [[[GKScore alloc] initWithLeaderboardIdentifier:strCategory] autorelease];
 
+		NSLog (@"Game Center: Gonna report a score %@", strCategory);
+
 		if (scoreReporter) {
 
 			scoreReporter.value = score;
+			NSLog (@"Game Center: Score reporter is not nil %@", strCategory);
 
 			//[scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
 			[GKScore reportScores:@[scoreReporter] withCompletionHandler:^(NSError *error) {
