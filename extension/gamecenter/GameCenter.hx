@@ -35,9 +35,9 @@ class GameCenter {
 		
 		#if (ios || mac)
 		#if (openfl_next || openfl_legacy || nme)
-			openfl.Lib.pause ();
+			//openfl.Lib.pause ();
 		#else
-			openfl.system.System.pause ();
+			//openfl.system.System.pause ();
 		#end
 		gamecenter_authenticate ();
 		#end
