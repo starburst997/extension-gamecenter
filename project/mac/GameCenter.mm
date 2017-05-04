@@ -482,11 +482,15 @@ namespace gamecenter {
 
 	void showAchievements () {
 
+		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+
 		NSLog(@"Game Center: Show Achievements");
 		NSWindow* window = [NSApplication sharedApplication].keyWindow;
 		GKAchievementViewController* achievements = [[GKAchievementViewController alloc] init];
 
 		if (achievements != nil) {
+
+			NSLog(@"Game Center: Ya!");
 
 			achievements.achievementDelegate = viewDelegate;
 
@@ -500,6 +504,7 @@ namespace gamecenter {
 
 		}
 
+		[pool drain];
 	}
 
 
